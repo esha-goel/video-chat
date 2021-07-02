@@ -9,11 +9,11 @@ const peerServer = ExpressPeerServer(server, {
   debug: true
 });
 
-
-
 app.set('view engine','ejs');
 app.use(express.static('public'));
 app.use('/peerjs',peerServer);
+
+
 
 app.get('/',(req,res)=>{
     res.redirect(`/${uuidV4()}`);
@@ -32,6 +32,10 @@ io.on('connection',socket => {
         socket.on('message',message => {
             io.to(roomId).emit('createMessage',message);
         });
+
+        socket.on('disconnect',()=>{
+            socket.broadcast.to(roomId).emit('user-disconnected',userId);
+        })
     })
 })
 

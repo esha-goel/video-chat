@@ -5,11 +5,16 @@ const myVideo = document.createElement('video');
 myVideo.muted = true;
 
 let myVideoStream;
+let USER_ID;
+
+// list of participants
+const peers = {};
 
 var peer = new Peer(undefined,{
     path:'/peerjs',
     host:'/',
-    port:'443' //coz of nodejs server
+    port:'3030' //coz of nodejs server
+    // port:'443' //deployment
 });
 
 navigator.mediaDevices.getUserMedia({
@@ -65,18 +70,35 @@ peer.on('call',call => {
     
 });
 
+socket.on('user-disconnected',userId=>{
+    if(peers[userId])
+        peers[userId].close();
+})
+
 peer.on('open',id => {
+    USER_ID = id;
     socket.emit('join-room',ROOM_ID,id);
 });
 
 
 
 const connectToNewUser = (userId,stream) => {
+    // send ours 
     const call = peer.call(userId, stream);
+
+    // add theirs to our screen i.e. pick the call
     const video = document.createElement('video');
     call.on('stream', userVideoStream => {
         addVideoStream(video, userVideoStream);
     });
+
+    // when other user leaves
+    call.on('close',()=>{
+        video.remove();
+    })
+    
+    // add to the list
+    peers[userId] = call;
 };
 
 
@@ -150,5 +172,9 @@ const setPlayVideo = () => {
       <span>Play Video</span>
     `
     document.querySelector('.video_button').innerHTML = html;
+}
+
+const leaveMeeting = () => {
+    document.location.href = '/';
 }
   
