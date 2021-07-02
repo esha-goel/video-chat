@@ -13,8 +13,8 @@ const peers = {};
 var peer = new Peer(undefined,{
     path:'/peerjs',
     host:'/',
-    port:'3030' //coz of nodejs server
-    // port:'443' //deployment
+    // port:'3030' //coz of nodejs server
+    port:'443' //deployment
 });
 
 navigator.mediaDevices.getUserMedia({
