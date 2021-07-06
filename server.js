@@ -19,9 +19,15 @@ app.get('/',(req,res)=>{
     res.redirect(`/${uuidV4()}`);
 })
 
+app.get('/leave',(req,res)=>{
+    res.render('leave');
+})
+
 app.get('/:room',(req,res)=>{
     res.render('room',{roomId:req.params.room}); //sending to ejs
 })
+
+
 
 
 io.on('connection',socket => {

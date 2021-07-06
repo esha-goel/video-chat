@@ -13,8 +13,8 @@ const peers = {};
 var peer = new Peer(undefined,{
     path:'/peerjs',
     host:'/',
-    // port:'3030' //coz of nodejs server
-    port:'443' //deployment
+    port:'3030' //coz of nodejs server
+    // port:'443' //deployment
 });
 
 navigator.mediaDevices.getUserMedia({
@@ -175,6 +175,58 @@ const setPlayVideo = () => {
 }
 
 const leaveMeeting = () => {
-    document.location.href = '/';
+    document.location.href = '/leave';
 }
   
+
+$('.chat_button').click(() => {
+    $('.main__right').toggle();
+
+    const obj = document.getElementsByClassName('main__right')[0];
+    const style = window.getComputedStyle(obj);
+    const display = style.getPropertyValue('display');
+
+    if(display==='none')
+        document.getElementsByClassName('main__left')[0].style.flex = 1;
+    else
+    {
+        document.getElementsByClassName('main__right__invite')[0].style.display = "none";
+        document.getElementsByClassName('main__left')[0].style.flex = 0.8;
+        obj.style.display = "flex";
+    }
+})
+
+$('.invite_button').click(() => {
+    $('.main__right__invite').toggle();
+
+    const obj = document.getElementsByClassName('main__right__invite')[0];
+    const style = window.getComputedStyle(obj);
+    const display = style.getPropertyValue('display');
+
+    if(display==='none')
+        document.getElementsByClassName('main__left')[0].style.flex = 1;
+    else
+    {
+        document.getElementsByClassName('main__right')[0].style.display = "none";
+        document.getElementsByClassName('main__left')[0].style.flex = 0.8;
+        obj.style.display = "flex";
+    }
+})
+
+document.getElementById('room_id').innerHTML = ROOM_ID;
+
+$("#copyLink").click(() => {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($("#room_id").text()).select();
+    document.execCommand("copy");
+    $temp.remove();
+    $("#copy__message").fadeToggle();
+    $("#copy__message").fadeToggle(1500);
+});
+
+
+
+
+
+
