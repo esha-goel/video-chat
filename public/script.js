@@ -213,7 +213,7 @@ $('.invite_button').click(() => {
     }
 })
 
-document.getElementById('room_id').innerHTML = ROOM_ID;
+document.getElementById('room_id').innerHTML = window.location.href;
 
 $("#copyLink").click(() => {
     var $temp = $("<input>");
@@ -224,6 +224,10 @@ $("#copyLink").click(() => {
     $("#copy__message").fadeToggle();
     $("#copy__message").fadeToggle(1500);
 });
+
+const URL = 'https://video-chat-app-374e7.web.app/chats/';
+// const URL = "http://localhost:3000/chats/"
+document.getElementById('chat__iframe').src = URL+ROOM_ID;
 
 
 
