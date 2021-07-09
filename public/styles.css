@@ -95,7 +95,7 @@ video{
     text-align: center;
 }
 
-.main__chat_window {
+/* .main__chat_window {
     flex-grow: 1;
     overflow-y: auto;
 }
@@ -115,7 +115,7 @@ video{
     background-color: transparent;
     border: none;
     color: #F5F5F5;
-}
+} */
 
 .main__link{
     color: #F5F5F5;
