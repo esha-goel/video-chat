@@ -5,9 +5,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Chat</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .left__body{
+            background-color: #1C1E20;
+            height: 100vh;
+            width: 100vw;
+            display: grid;
+            place-items: center;
+            color: #D2D2D2;
+        }
+        .left__container{
+            padding: 100px;
+            text-align: center;
+            background-color: #343434;
+            border-radius: 10px;
+            box-shadow: 0 1px 3px rgb(36 28 28), 0 1px;
+        }
+        .left__container>button{
+            margin-top: 50px;
+            text-transform: inherit !important;
+            background-color: #0e0e0ebf !important;
+            color: #D2D2D2;
+        }
+    </style>
+    <script>
+        const goHome = () => {
+            window.location.href = "https://video-chat-app-374e7.web.app/";
+        }
+    </script>
 </head>
 <body>
-    You left the meeting!
-    <button>Go to Home</button>
+    <div class="left__body">
+        <div class="left__container">
+            <h2>You left the meeting!</h2>
+            <button class="btn" onclick='goHome()'>Go to Home</button>
+        </div>
+    </div>
 </body>
 </html>
