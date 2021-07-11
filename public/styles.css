@@ -73,18 +73,20 @@ video{
 }
 
 
-.main__right,.main__right__invite{
+.main__right,.main__right__invite,.main__right__participants{
     
     flex:0.2;
     
     background-color: #242324;
     border-left: 1px solid #3D3D42;
+    color: #F5F5F5;
+    align-items: center;
     /* display: flex; */
     /* display: none; */
     flex-direction: column;
 }
 
-.main__right__invite{
+.main__right__invite,.main__right__participants{
     display: none;
     word-break: break-all;
 }

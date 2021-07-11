@@ -191,6 +191,25 @@ $('.chat_button').click(() => {
     else
     {
         document.getElementsByClassName('main__right__invite')[0].style.display = "none";
+        document.getElementsByClassName('main__right__participants')[0].style.display = "none";
+        document.getElementsByClassName('main__left')[0].style.flex = 0.8;
+        obj.style.display = "flex";
+    }
+})
+
+$('.participants_button').click(() => {
+    $('.main__right__participants').toggle();
+
+    const obj = document.getElementsByClassName('main__right__participants')[0];
+    const style = window.getComputedStyle(obj);
+    const display = style.getPropertyValue('display');
+
+    if(display==='none')
+        document.getElementsByClassName('main__left')[0].style.flex = 1;
+    else
+    {
+        document.getElementsByClassName('main__right__invite')[0].style.display = "none";
+        document.getElementsByClassName('main__right')[0].style.display = "none";
         document.getElementsByClassName('main__left')[0].style.flex = 0.8;
         obj.style.display = "flex";
     }
@@ -208,6 +227,7 @@ $('.invite_button').click(() => {
     else
     {
         document.getElementsByClassName('main__right')[0].style.display = "none";
+        document.getElementsByClassName('main__right__participants')[0].style.display = "none";
         document.getElementsByClassName('main__left')[0].style.flex = 0.8;
         obj.style.display = "flex";
     }
